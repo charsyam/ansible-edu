@@ -1,0 +1,6 @@
+---
+- name: Install Web Servers
+  hosts: test
+  roles:
+    - { role: base, tags: ["base"] }
+    - { role: nginx, tags: ["nginx"] }

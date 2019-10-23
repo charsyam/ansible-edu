@@ -1,0 +1,17 @@
+---
+- name: Test testboxes
+  hosts: test
+
+  tasks:
+    - name: get filename
+      shell: ls -al /etc/
+      register: output
+
+    - name: Debug oruput
+      debug:
+        msg: "Msg is {{ item }}"
+      with_items: "{{ output.stdout_lines }}"
+
+    - name: Debug rc
+      debug:
+        msg: "Msg is {{ output.rc}}"

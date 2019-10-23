@@ -1,0 +1,16 @@
+---
+- name: Test testboxes
+  hosts: test
+
+  vars:
+    names:
+      - name1
+      - name2
+      - name3
+      - name4
+
+  tasks:
+    - name: Display Names
+      debug:
+        msg: "Msg is {{ item }}"
+      with_items: "{{ names }}"

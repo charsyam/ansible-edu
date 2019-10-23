@@ -1,0 +1,20 @@
+---
+- name: Install Nginx
+  apt:
+    pkg: nginx
+    state: present
+    update_cache: yes
+  notify:
+    - Restart Nginx
+  become: True
+
+- name: Copy Nginx default.conf
+  template:
+    src=templates/default.j2
+    dest=/etc/nginx/sites-available/default
+    owner=root
+    group=root
+    mode=0644
+  notify:
+    - Restart Nginx
+  become: True
